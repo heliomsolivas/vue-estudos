@@ -1,0 +1,44 @@
+<html>
+	<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	</head>
+	<body>
+
+	<div id="app">
+		<input type="text" v-model="busca">
+
+		<ul>
+			<li v-for="carro in filteredCars">{{carro.nome}}</li>
+		</ul>
+	</div>
+
+	<script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+	<script>
+		var app = new Vue({
+            el: '#app',
+            data: {
+                carros: [
+                    {nome: 'gol', preco: 16000.00},
+                    {nome: 'fusca', preco: 3450.00},
+                    {nome: 'uno', preco: 9000.00},
+                    {nome: 'camaro', preco: 190000.00},
+                    {nome: 'corsa', preco: 190000.00},
+                    {nome: 'parati', preco: 190000.00},
+                    {nome: 'crossfox', preco: 190000.00},
+                    {nome: 'ecosport', preco: 190000.00},
+                ],
+                busca: '',
+            },
+            computed: {
+			  filteredCars: function () {
+			      var self = this
+				  return self.carros.filter(function (carro) {
+				  return carro.nome.indexOf(self.busca) !== -1
+          		})
+			  }
+			},
+            
+        })
+	</script>
+	</body>
+</html>
