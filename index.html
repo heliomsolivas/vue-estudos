@@ -1,21 +1,31 @@
 <html>
 	<head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
 
 	<div id="filtro">
 		<div class="container">
-		<h2>Table with Vue.js</h2>
+			<div class="row">
+		<h2>Tabela de carros com Vue.js</h2>
 		
 		<table class="table">
 		<thead>
-			<th>Nome</th>
-			<th>Preco</th>
+			<th>Nome <a href="#" v-on:click="ordenarCarros()"><i class="fa fa-sort-asc" aria-hidden="true"></i></a></th>
+			<th>Marca</th>
+			<th>Categoria</th>
+			<th>Motor</th>
+			<th>Câmbio</th>
+			<th>Preço</th>
 		</thead>
 			<tbody>
 			<tr v-for="carro in filteredCars">
 				<td>{{carro.nome}}</td>
+				<td>{{carro.marca}}</td>
+				<td>{{carro.categoria}}</td>
+				<td>{{carro.motor}}</td>
+				<td>{{carro.cambio}}</td>
 				<td>{{carro.preco}}</td>
 			</tr>
 			</tbody>
@@ -24,6 +34,7 @@
 		<input type="text" v-model="busca">
 
 		</div>
+	</div>
 	</div>
 
 
@@ -34,24 +45,57 @@
             el: '#filtro',
             data: {
                 carros: [
+                	{nome: 'a1', marca: 'Audi', categoria: 'Hatch Pequeno', motor: '1.4', cambio: 'Automático', preco: 16000.00},
+                	{nome: 'a3', marca: 'Audi', categoria: 'Hatch Médio', motor: '1.4/1.8/2.0', cambio: 'Automático', preco: 16000.00},
+                	{nome: 'a3 sedan', marca: 'Audi', categoria: 'Sedã Médio', motor: '122/180cv', cambio: 'Automático',preco: 16000.00},
+                	{nome: 'zafira', marca: 'GM/Chevrolet', categoria: 'GrandCab', motor: '2.0', cambio: 'Manual/Automático', preco: 16000.00},
+                	{nome: 'a4', marca: 'Audi', categoria: 'Sedã Grande', motor: '2.0', cambio: 'Automático', preco: 16000.00},
+                	{nome: 'a4 avant', marca: 'Audi', categoria: 'Station Wagon Médio', motor: '2.0/3.2', cambio: 'Automático',preco: 16000.00},
+                	{nome: 'a7', marca: 'Audi', categoria: 'Sedã Grande', motor: '3.0', cambio: 'Automático', preco: 16000.00},
+                	{nome: 'onix', marca: 'GM/Chevrolet', categoria: 'Hatch Pequeno', motor: '1.0/1.4', cambio: 'Manual/Automático', preco: 16000.00},
+                	{nome: 'a8', marca: 'Audi', categoria: 'Hatch Pequeno', motor: '1.4', cambio: 'Automático', preco: 16000.00},
+                	{nome: 'accord', marca: 'Honda', categoria: 'Sedã Grande', motor: '2.0/3.5', cambio: 'Automático', preco: 16000.00},
+                	{nome: 'actyon', preco: 16000.00},
+                	{nome: 'blazer', preco: 16000.00},
                     {nome: 'gol', preco: 16000.00},
                     {nome: 'fusca', preco: 3450.00},
                     {nome: 'uno', preco: 9000.00},
                     {nome: 'camaro', preco: 190000.00},
                     {nome: 'corsa', preco: 190000.00},
+                    {nome: 'fluence', preco: 16000.00},
+                    {nome: 'fiat toro', preco: 16000.00},
                     {nome: 'parati', preco: 190000.00},
                     {nome: 'crossfox', preco: 190000.00},
                     {nome: 'ecosport', preco: 190000.00},
                 ],
                 busca: '',
             },
+            methods: {
+            	ordenarCarros: function(e){
+            		//Função comparar, pega duas variaveis
+            		//By default, the sort() method sorts the values as strings in alphabetical and ascending order.
+            		function comparar(a,b){
+            			if (a.nome < b.nome)
+				        	return -1;
+				        //Se o primeiro nome for menor que o segundo, sobe ele
+				      	if (a.nome > b.nome)
+				        	return 1;
+				        //Se for maior deixa ele depois
+				      return 0;
+            		}
+            		return this.carros.sort(comparar);
+            		//Pega o array de carros e usa o sort com uma função de comparação dentro
+
+            		
+            	}
+        	},
             computed: {
 			  filteredCars: function () {
 			      var self = this
 				  return self.carros.filter(function (carro) {
 				  return carro.nome.indexOf(self.busca) !== -1
           		})
-			  }
+			  },
 			},
             
         })
