@@ -79,6 +79,7 @@
                 { nome: 'ecosport', marca: 'Ford', categoria: 'SUV', motor: '1.6/2.0', cambio: 'Manual/Automatizado/Dupla Embreagem', preco: 190000.00 },
             ],
             busca: '',
+            hasOrdered: false,
         },
         methods: {
             ordenarCarros: function(e) {
@@ -93,8 +94,17 @@
                     //Se for maior deixa ele depois
                     return 0;
                 }
-                return this.carros.sort(comparar);
-                //Pega o array de carros e usa o sort com uma função de comparação dentro
+                
+                //Pega o array de carros e usa o sort/reverse com uma função de comparação dentro
+
+                if(!this.hasOrdered) {
+                     this.hasOrdered = true;
+                     return this.carros.sort(comparar);
+                } else {
+                    this.hasOrdered = false;
+                    return this.carros.reverse(comparar);
+                }
+                
             }
         },
         computed: {
