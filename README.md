@@ -14,5 +14,6 @@ todo:
   - filtro de busca avançado (você pode escolher qual campo quer filtrar no search)
   - melhor organização do código vue
   - separar em componentes .vue
+  - criar o detalhe dos carros com mais informações (vamos precisar de router?)
 
-Se quiser ajudar é só abrir um pull request :)
+Se quiser ajudar é só abrir uma issue ou fazer um fork e abrir um pull request :)

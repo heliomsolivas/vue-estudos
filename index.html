@@ -43,6 +43,7 @@
                             <th>Motor</th>
                             <th>Câmbio</th>
                             <th>Preço</th>
+                            <th>#</th>
                         </thead>
                         <tbody>
                             <tr v-for="carro in filteredCars.slice(0, totalCarros)">
@@ -53,6 +54,7 @@
                                 <td>{{carro.motor}}</td>
                                 <td>{{carro.cambio}}</td>
                                 <td>{{carro.preco}}</td>
+                                <td>Detalhes</td>
                             </tr>
                         </tbody>
                     </table>
