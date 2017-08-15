@@ -1,6 +1,9 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
@@ -19,14 +22,14 @@
                 </div>
                 <div class="col-6">
                     <div class="input-group">
-                        <label class="col-form-label">Buscar (nome):  </label>
+                        <label class="col-form-label">Buscar (nome): </label>
                         <input class="form-control" type="text" v-model="busca">
                     </div>
                 </div>
                 <div class="col-12">
                     <table class="table">
                         <thead>
-                        	<!--Diretiva v-on:click para disparar o método -->
+                            <!--Diretiva v-on:click para disparar o método -->
                             <th>Nome <a href="#" v-on:click="ordenarCarros()"><i class="fa fa-sort-asc" aria-hidden="true"></i></a></th>
                             <th>Marca</th>
                             <th>Categoria</th>
@@ -50,38 +53,30 @@
         </div>
     </div>
     <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
     var filtro = new Vue({
         el: '#filtro',
         data: {
-            carros: [
-                { nome: 'a1', marca: 'Audi', categoria: 'Hatch Pequeno', motor: '1.4', cambio: 'Automático', preco: 16000.00 },
-                { nome: 'a3', marca: 'Audi', categoria: 'Hatch Médio', motor: '1.4/1.8/2.0', cambio: 'Automático', preco: 16000.00 },
-                { nome: 'a3 sedan', marca: 'Audi', categoria: 'Sedã Médio', motor: '122/180cv', cambio: 'Automático', preco: 16000.00 },
-                { nome: 'zafira', marca: 'GM/Chevrolet', categoria: 'GrandCab', motor: '2.0', cambio: 'Manual/Automático', preco: 16000.00 },
-                { nome: 'a4', marca: 'Audi', categoria: 'Sedã Grande', motor: '2.0', cambio: 'Automático', preco: 16000.00 },
-                { nome: 'a4 avant', marca: 'Audi', categoria: 'Station Wagon Médio', motor: '2.0/3.2', cambio: 'Automático', preco: 16000.00 },
-                { nome: 'a7', marca: 'Audi', categoria: 'Sedã Grande', motor: '3.0', cambio: 'Automático', preco: 16000.00 },
-                { nome: 'onix', marca: 'GM/Chevrolet', categoria: 'Hatch Pequeno', motor: '1.0/1.4', cambio: 'Manual/Automático', preco: 16000.00 },
-                { nome: 'a8', marca: 'Audi', categoria: 'Hatch Pequeno', motor: '1.4', cambio: 'Automático', preco: 16000.00 },
-                { nome: 'accord', marca: 'Honda', categoria: 'Sedã Grande', motor: '2.0/3.5', cambio: 'Automático', preco: 16000.00 },
-                { nome: 'actyon', marca: 'Ssangyong', categoria: 'SUV', motor: '2.3', cambio: 'Manual/Automático', preco: 16000.00 },
-                { nome: 'blazer', marca: 'GM/Chevrolet', categoria: 'SUV', motor: '2.4', cambio: 'Manual', preco: 16000.00 },
-                { nome: 'gol', marca: 'Volkswagen', categoria: 'Entrada', motor: '1.0/1.6', cambio: 'Manual/Automatizado', preco: 16000.00 },
-                { nome: 'fusca', marca: 'Volkswagen', categoria: 'Hatch Médio', motor: '2.0 turbo', cambio: 'Manual/Automatizado', preco: 3450.00 },
-                { nome: 'uno', marca: 'Fiat', categoria: 'Entrada', motor: '1.0/1.3', cambio: 'Manual/Automatizado', preco: 9000.00 },
-                { nome: 'camaro', marca: 'GM/Chevrolet', categoria: 'Sport', motor: '461cv', cambio: 'Automatico/8 marchas', preco: 190000.00 },
-                { nome: 'corsa sedã', marca: 'GM/Chevrolet', categoria: 'Sedã Pequeno', motor: '1.4', cambio: 'Manual', preco: 190000.00 },
-                { nome: 'fluence', marca: 'Renault', categoria: 'Sedã Médio', motor: '2.0', cambio: 'Manual/Automático', preco: 16000.00 },
-                { nome: 'fiat toro', marca: 'Fiat', categoria: 'Picape Grande', motor: '1.8/2.0', cambio: 'Manual/Automático', preco: 16000.00 },
-                { nome: 'parati', marca: 'Volkswagen', categoria: 'Station Wagon Médio', motor: '1.6', cambio: 'Manual', preco: 190000.00 },
-                { nome: 'crossfox', marca: 'Volkswagen', categoria: 'Hatch Pequeno', motor: '1.0/1.6', cambio: 'Manual/Automatizado', preco: 190000.00 },
-                { nome: 'ecosport', marca: 'Ford', categoria: 'SUV', motor: '1.6/2.0', cambio: 'Manual/Automatizado/Dupla Embreagem', preco: 190000.00 },
-            ],
+            carros: [],
             busca: '',
             hasOrdered: false,
         },
+        created: function() {
+            this.retornaCarrosJson();
+        },
         methods: {
+            retornaCarrosJson: function() {
+                var vm = this;
+                axios.get('./json/carros.json')
+                    .then(function(res) {
+                        vm.carros = res.data;
+
+                    })
+                    .catch(function(err) {
+                        console.log(err);
+                    })
+            },
             ordenarCarros: function(e) {
                 //Função comparar, pega duas variaveis
                 //By default, the sort() method sorts the values as strings in alphabetical and ascending order.
@@ -94,17 +89,17 @@
                     //Se for maior deixa ele depois
                     return 0;
                 }
-                
+
                 //Pega o array de carros e usa o sort/reverse com uma função de comparação dentro
 
-                if(!this.hasOrdered) {
-                     this.hasOrdered = true;
-                     return this.carros.sort(comparar);
+                if (!this.hasOrdered) {
+                    this.hasOrdered = true;
+                    return this.carros.sort(comparar);
                 } else {
                     this.hasOrdered = false;
                     return this.carros.reverse(comparar);
                 }
-                
+
             }
         },
         computed: {
