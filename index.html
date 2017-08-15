@@ -27,9 +27,16 @@
                     </div>
                 </div>
                 <div class="col-12">
+                    <label>Filtrar por quantidade:</label>
+                    <a href="#" v-on:click.prevent="totalCarros = 10">10</a>
+                    <a href="#" v-on:click.prevent="totalCarros = 30">30</a>
+                    <a href="#" v-on:click.prevent="totalCarros = 50">50</a>
+                </div>
+                <div class="col-12">
                     <table class="table">
                         <thead>
                             <!--Diretiva v-on:click para disparar o método -->
+                            <th>Id</th>
                             <th>Nome <a href="#" v-on:click="ordenarCarros()"><i class="fa fa-sort-asc" aria-hidden="true"></i></a></th>
                             <th>Marca</th>
                             <th>Categoria</th>
@@ -38,7 +45,8 @@
                             <th>Preço</th>
                         </thead>
                         <tbody>
-                            <tr v-for="carro in filteredCars">
+                            <tr v-for="carro in filteredCars.slice(1, totalCarros)">
+                                <td>{{carro.id}}</td>
                                 <td>{{carro.nome}}</td>
                                 <td>{{carro.marca}}</td>
                                 <td>{{carro.categoria}}</td>
@@ -61,6 +69,7 @@
             carros: [],
             busca: '',
             hasOrdered: false,
+            totalCarros : 10,
         },
         created: function() {
             this.retornaCarrosJson();

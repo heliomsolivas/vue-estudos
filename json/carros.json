@@ -1,4 +1,5 @@
 [{
+    "id": 1,
     "nome": "a1",
     "marca": "Audi",
     "categoria": "Hatch Pequeno",
@@ -7,6 +8,7 @@
     "preco": 1600000
 },
 {
+    "id": 2,
     "nome": "a3",
     "marca": "Audi",
     "categoria": "Hatch Médio",
@@ -15,6 +17,7 @@
     "preco": 16000.00
 },
 {
+    "id": 3,
     "nome": "a3 sedan",
     "marca": "Audi",
     "categoria": "Sedã Médio",
@@ -23,6 +26,7 @@
     "preco": 16000.00
 },
 {
+    "id": 4,
     "nome": "zafira",
     "marca": "GM/Chevrolet",
     "categoria": "GrandCab",
@@ -31,6 +35,7 @@
     "preco": 16000.00
 },
 {
+    "id": 5,
     "nome": "a4",
     "marca": "Audi",
     "categoria": "Sedã Grande",
@@ -39,6 +44,7 @@
     "preco": 16000.00
 },
 {
+    "id": 6,
     "nome": "a4 avant",
     "marca": "Audi",
     "categoria": "Station Wagon Médio",
@@ -47,6 +53,7 @@
     "preco": 16000.00
 },
 {
+    "id": 7,
     "nome": "a7",
     "marca": "Audi",
     "categoria": "Sedã Grande",
@@ -55,6 +62,7 @@
     "preco": 16000.00
 },
 {
+    "id": 8,
     "nome": "onix",
     "marca": "GM/Chevrolet",
     "categoria": "Hatch Pequeno",
@@ -63,6 +71,7 @@
     "preco": 16000.00
 },
 {
+    "id": 9,
     "nome": "a8",
     "marca": "Audi",
     "categoria": "Hatch Pequeno",
@@ -71,6 +80,7 @@
     "preco": 16000.00
 },
 {
+    "id": 10,
     "nome": "accord",
     "marca": "Honda",
     "categoria": "Sedã Grande",
@@ -79,6 +89,7 @@
     "preco": 16000.00
 },
 {
+    "id": 11,
     "nome": "actyon",
     "marca": "Ssangyong",
     "categoria": "SUV",
@@ -87,6 +98,7 @@
     "preco": 16000.00
 },
 {
+    "id": 12,
     "nome": "blazer",
     "marca": "GM/Chevrolet",
     "categoria": "SUV",
@@ -95,6 +107,7 @@
     "preco": 16000.00
 },
 {
+    "id": 13,
     "nome": "gol",
     "marca": "Volkswagen",
     "categoria": "Entrada",
@@ -103,6 +116,7 @@
     "preco": 16000.00
 },
 {
+    "id": 14,
     "nome": "fusca",
     "marca": "Volkswagen",
     "categoria": "Hatch Médio",
@@ -111,6 +125,7 @@
     "preco": 3450.00
 },
 {
+    "id": 15,
     "nome": "uno",
     "marca": "Fiat",
     "categoria": "Entrada",
@@ -119,6 +134,7 @@
     "preco": 9000.00
 },
 {
+    "id": 16,
     "nome": "camaro",
     "marca": "GM/Chevrolet",
     "categoria": "Sport",
@@ -127,6 +143,7 @@
     "preco": 190000.00
 },
 {
+    "id": 17,
     "nome": "corsa sedã",
     "marca": "GM/Chevrolet",
     "categoria": "Sedã Pequeno",
@@ -135,6 +152,7 @@
     "preco": 190000.00
 },
 {
+    "id": 18,
     "nome": "fluence",
     "marca": "Renault",
     "categoria": "Sedã Médio",
@@ -143,6 +161,7 @@
     "preco": 16000.00
 },
 {
+    "id": 19,
     "nome": "fiat toro",
     "marca": "Fiat",
     "categoria": "Picape Grande",
@@ -151,6 +170,7 @@
     "preco": 16000.00
 },
 {
+    "id": 20,
     "nome": "parati",
     "marca": "Volkswagen",
     "categoria": "Station Wagon Médio",
@@ -159,6 +179,7 @@
     "preco": 190000.00
 },
 {
+    "id": 21,
     "nome": "crossfox",
     "marca": "Volkswagen",
     "categoria": "Hatch Pequeno",
@@ -167,6 +188,7 @@
     "preco": 190000.00
 },
 {
+    "id": 22,
     "nome": "ecosport",
     "marca": "Ford",
     "categoria": "SUV",
