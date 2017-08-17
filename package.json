@@ -1,0 +1,19 @@
+{
+  "name": "vue-estudos",
+  "version": "1.0.0",
+  "description": ": Estudos de Vue.js 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heliomsolivas/vue-estudos.git"
+  },
+  "author": "Helio Marcondes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heliomsolivas/vue-estudos/issues"
+  },
+  "homepage": "https://github.com/heliomsolivas/vue-estudos#readme"
+}

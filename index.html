@@ -14,69 +14,113 @@
 </head>
 
 <body>
+    <div class="container">
+        <div class="row">
+        
+        </div>
+
+    </div>
     <div id="filtro">
         <div class="container">
             <div class="row">
-                <div class="col-6">
-                    <h2>Tabela de carros com Vue.js</h2>
+                <div class="col-12">
+                    <a href="#" v-on:click="makeActive('carrosActive')">Carros</a>
+                    <a href="#" v-on:click="makeActive('marcasActive')">Marcas</a>
                 </div>
-                <div class="col-6">
-                    <div class="input-group">
-                        <label class="col-form-label">Buscar (nome): </label>
-                        <input class="form-control" type="text" v-model="busca">
+                <div class="w-carros" v-show="isActiveTab('carrosActive')">
+                    <div class="col-6">
+                        <h2>Tabela de carros</h2>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <label class="col-form-label">Buscar (nome): </label>
+                            <input class="form-control" type="text" v-model="busca">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label>Filtrar por quantidade:</label>
+                        <a href="#" v-on:click.prevent="totalCarros = 10">10</a>
+                        <a href="#" v-on:click.prevent="totalCarros = 30">30</a>
+                        <a href="#" v-on:click.prevent="totalCarros = 50">50</a>
+                    </div>
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead class="thead-inverse">
+                                <!--Diretiva v-on:click para disparar o método -->
+                                <th>#</th>
+                                <th>Nome <a href="#" v-on:click="ordenarCarros()"><i class="fa fa-sort-asc" aria-hidden="true"></i></a></th>
+                                <th>Marca</th>
+                                <th>Categoria</th>
+                                <th>Motor</th>
+                                <th>Câmbio</th>
+                                <th>Preço</th>
+                                <th>#</th>
+                            </thead>
+                            <tbody>
+                                <tr v-for="carro in filteredCars.slice(0, totalCarros)">
+                                    <td>{{carro.id}}</td>
+                                    <td>{{carro.nome}}</td>
+                                    <td>{{carro.marca}}</td>
+                                    <td>{{carro.categoria}}</td>
+                                    <td>{{carro.motor}}</td>
+                                    <td>{{carro.cambio}}</td>
+                                    <td>{{carro.preco}}</td>
+                                    <td>Detalhes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
-                <div class="col-12">
-                    <label>Filtrar por quantidade:</label>
-                    <a href="#" v-on:click.prevent="totalCarros = 10">10</a>
-                    <a href="#" v-on:click.prevent="totalCarros = 30">30</a>
-                    <a href="#" v-on:click.prevent="totalCarros = 50">50</a>
-                </div>
-                <div class="col-12">
-                    <table class="table table-bordered">
-                        <thead class="thead-inverse">
-                            <!--Diretiva v-on:click para disparar o método -->
-                            <th>#</th>
-                            <th>Nome <a href="#" v-on:click="ordenarCarros()"><i class="fa fa-sort-asc" aria-hidden="true"></i></a></th>
-                            <th>Marca</th>
-                            <th>Categoria</th>
-                            <th>Motor</th>
-                            <th>Câmbio</th>
-                            <th>Preço</th>
-                            <th>#</th>
-                        </thead>
-                        <tbody>
-                            <tr v-for="carro in filteredCars.slice(0, totalCarros)">
-                                <td>{{carro.id}}</td>
-                                <td>{{carro.nome}}</td>
-                                <td>{{carro.marca}}</td>
-                                <td>{{carro.categoria}}</td>
-                                <td>{{carro.motor}}</td>
-                                <td>{{carro.cambio}}</td>
-                                <td>{{carro.preco}}</td>
-                                <td>Detalhes</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="w-marcas" v-show="isActiveTab('marcasActive')">
+                    <div class="col-12">
+                        <h2>Tabela de marcas</h2>
+                    </div>
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead class="thead-inverse">
+                                <!--Diretiva v-on:click para disparar o método -->
+                                <th>#</th>
+                                <th>Nome <a href="#"><i class="fa fa-sort-asc" aria-hidden="true"></i></a></th>
+                                <th>Marca</th>
+                                <th>Categoria</th>
+                                <th>Motor</th>
+                                <th>Câmbio</th>
+                                <th>Preço</th>
+                                <th>#</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Detalhes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -91,11 +135,18 @@
             busca: '',
             hasOrdered: false,
             totalCarros: 10,
+            choice: 'carrosActive',
         },
         created: function() {
             this.retornaCarrosJson();
         },
         methods: {
+            makeActive: function(val) {
+                this.choice = val;
+            },
+            isActiveTab: function(val) {
+                return this.choice === val;
+            },
             retornaCarrosJson: function() {
                 var vm = this;
                 axios.get('./json/carros.json')
