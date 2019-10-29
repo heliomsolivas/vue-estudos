@@ -267,5 +267,14 @@
         "motor": "3.8",
         "cambio": "Automático",
         "preco": 190000.00
+    },
+    {
+	"id": 31,
+	"nome": "BWM 320i",
+	"marca": "bmw",
+	"categoria": "esportivos",
+	"motor": "5.0",
+	"cambio": "Automatico",
+	"preco": 156465.00
     }
 ]
